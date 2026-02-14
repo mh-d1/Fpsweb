@@ -69,21 +69,26 @@ window.addEventListener('DOMContentLoaded', function() {
         renderer.render(scene,camera);
     }
 
-    function initGame(){
-        scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x87ceeb);
+    scene = new THREE.Scene();
+scene.background = new THREE.Color(0x87ceeb);
 
-        camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-        camera.position.set(0,2,5);
+camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+camera.position.set(0, 2, 5);
 
-        renderer = new THREE.WebGLRenderer({antialias:true});
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
+renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 
-        scene.add(new THREE.AmbientLight(0xffffff,1));
-        var dirLight = new THREE.DirectionalLight(0xffffff,0.7);
-        dirLight.position.set(10,20,10);
-        scene.add(dirLight);
+scene.add(new THREE.AmbientLight(0xffffff, 1));
+
+var ground = new THREE.Mesh(
+    new THREE.PlaneGeometry(50,50),
+    new THREE.MeshPhongMaterial({color:0x556B2F})
+);
+ground.rotation.x = -Math.PI/2;
+scene.add(ground);
+
+animate();
 
         var ground = new THREE.Mesh(new THREE.PlaneGeometry(100,100), new THREE.MeshPhongMaterial({color:0x556B2F}));
         ground.rotation.x = -Math.PI/2;
