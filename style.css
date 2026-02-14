@@ -1,0 +1,25 @@
+body{margin:0;overflow:hidden;font-family:sans-serif;}
+canvas{display:block;}
+
+#startScreen{
+    position:absolute;top:0;left:0;width:100%;height:100%;
+    background:#ff0000;display:flex;
+    justify-content:center;align-items:center;z-index:10;
+}
+#startScreen button{
+    padding:30px 60px;font-size:28px;border:none;border-radius:10px;
+    background:darkred;color:white;font-weight:bold;cursor:pointer;
+}
+
+#mobileControls{
+    position:absolute;bottom:10px;left:10px;z-index:10;display:none;
+}
+.joystick button{
+    width:50px;height:50px;margin:5px;border-radius:50%;
+    font-size:20px;background:#333;color:white;
+    border:none;
+}
+.actionBtns button{
+    width:60px;height:40px;margin:5px;border-radius:5px;
+    font-size:16px;background:darkred;color:white;border:none;
+}
