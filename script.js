@@ -2,7 +2,35 @@ import * as THREE from 'https://unpkg.com/three@0.158.0/build/three.module.js';
 import { PointerLockControls } from 'https://unpkg.com/three@0.158.0/examples/jsm/controls/PointerLockControls.js';
 
 window.addEventListener('DOMContentLoaded',()=>{
+//
+const startScreen = document.getElementById("startScreen");
+document.getElementById("playBtn").addEventListener("click", ()=>{
+    startScreen.style.display="none";
 
+    // Scene Three.js
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x87ceeb);
+
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    camera.position.set(0,2,5);
+
+    const renderer = new THREE.WebGLRenderer({antialias:true});
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    const light = new THREE.AmbientLight(0xffffff,1);
+    scene.add(light);
+
+    const ground = new THREE.Mesh(new THREE.PlaneGeometry(50,50), new THREE.MeshPhongMaterial({color:0x556B2F}));
+    ground.rotation.x = -Math.PI/2;
+    scene.add(ground);
+
+    function animate(){
+        requestAnimationFrame(animate);
+        renderer.render(scene,camera);
+    }
+    animate();
+});    
 // ===== Start Screen =====
 const startScreen = document.getElementById("startScreen");
 const playBtn = document.getElementById("playBtn");
